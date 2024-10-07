@@ -3,9 +3,7 @@
 ## Tabla de Contenidos
 
 1. [Instalación](#instalación)
-2. [Uso](#uso)
 3. [Cómo Contribuir](#cómo-contribuir)
-4. [Licencia](#licencia)
 
 ## Instalación
 
