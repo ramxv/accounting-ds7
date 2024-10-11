@@ -83,7 +83,6 @@
             <select id="estado_cobro" name="estado_cobro" required>
                 <option value="">Seleccione un estado</option>
                 <option value="pendiente">Pendiente</option>
-                <option value="parcial">Parcial</option>
                 <option value="pagado">Pagado</option>
             </select>
 
@@ -91,8 +90,7 @@
             <select id="metodo_cobro" name="metodo_cobro" required>
                 <option value="">Seleccione un método</option>
                 <option value="efectivo">Efectivo</option>
-                <option value="transferencia">Transferencia Bancaria</option>
-                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                <option value="cheque">cheque</option>
             </select>
 
             <label for="numero_recibo">Número de Recibo:</label>
