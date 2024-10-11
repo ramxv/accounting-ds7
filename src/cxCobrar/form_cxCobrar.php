@@ -56,7 +56,7 @@
 </head>
 <body>
     <div class="formulario-container">
-        <h2>Formulario de Cxcobrar</h2>
+        <h2>Formulario de Cuentas por Cobrar</h2>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Aquí puedes procesar los datos del formulario
