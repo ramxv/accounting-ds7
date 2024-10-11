@@ -1,0 +1,30 @@
+/* Offcanvas oculto por defect */
+.offcanvas-custom {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Esconde fuera de la pantalla inicialmente */
+    width: 400px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out; /* Transición suave */
+    z-index: 1050; /* Para asegurarse de que esté encima del contenido */
+  }
+  
+  /* Cuando el offcanvas se muestra */
+  .offcanvas-show {
+    right: 0; /* Lo deslizamos a la vista */
+  }
+  
+  .offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .offcanvas-body {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
