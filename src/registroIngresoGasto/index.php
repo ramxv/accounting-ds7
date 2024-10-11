@@ -73,8 +73,8 @@
                     <label for="depreciacion" class="form-label" style="font-family: 'Roboto', sans-serif; font-weight: bold;">Categoría </label>
                     <select class="form-select" id="depreciacion" name="depreciacion" required>
                         <option value="" selected>Selecciona la categoría</option>
-                        <option value="cliente">Ingreso</option>
-                        <option value="proyecto">Gasto</option>
+                        <option value="ingreso">Ingreso</option>
+                        <option value="gasto">Gasto</option>
                     </select>
                 </div>
 
@@ -133,7 +133,7 @@
             <div class="text-center mt-4 mb-4">
                 <button type="submit" class="btn" style="background-color: #1d75e9; color: #fff; font-family: 'Roboto', sans-serif;">Registrar</button>
                 <button type="reset" class="btn" style="background-color: #03316d; color: #fff; font-family: 'Roboto', sans-serif;">Limpiar</button>
-                <button class="btn btn-primary" id="openOffcanvas"></button>
+                <button class="btn btn-primary" id="openOffcanvas">abrir cheque</button>
             </div>
         </form>
     </div>
@@ -185,4 +185,3 @@
 
 </body>
 </html>
->>>>>>> Stashed changes
