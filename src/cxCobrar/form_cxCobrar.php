@@ -64,10 +64,10 @@
         }
         ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <label for="id_factura">ID Factura:</label>
+            <label for="id_factura"># Factura:</label>
             <input type="text" id="id_factura" name="id_factura" required>
 
-            <label for="id_cliente">ID Cliente:</label>
+            <label for="id_cliente">Cliente:</label>
             <input type="text" id="id_cliente" name="id_cliente" required>
 
             <label for="fecha_emision">Fecha de Emisión:</label>
