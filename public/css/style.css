@@ -1,0 +1,74 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+.row {
+	height: 100%;
+}
+
+.main-container{
+	height: 100%;
+
+}
+
+.menu-title{
+	font-size: larger;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.list-container{
+	list-style-type: none;
+}
+
+.child-list-container {
+	display: list-item;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: black;
+	font-weight: 600;
+	font-size: medium;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	margin-left: 0;
+	border-radius: 15px;
+}
+
+.child-list-container:hover {
+	background-color: #e1eef8;
+	color: #013ea8;
+	transition: all 0.3s ease;
+}
+
+.child-list-container:hover img {
+	filter: brightness(0) saturate(100%) hue-rotate(180deg) invert(30%) sepia(100%) saturate(500%) hue-rotate(190deg);
+	transition: filter 0.3s ease;
+}
+
+.menu-container {
+	min-height: 100vh;
+}
+
+.dash-container{
+	background-color: #f7f5f5;
+}
+
+.dash-child {
+	background-image: url(../img/background2-dash.jpg);
+	background-size: cover; /* Ensures the background covers the entire element without distorting */
+	background-position: center; /* Centers the image */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	border-radius: 10px;
+	color: white;
+	padding: 1rem;
+}
+
+.dash-stats{
+	border-radius: 7.5px;
+	background-color: white;
+	color: black;
+	gap: 5px;
+}
