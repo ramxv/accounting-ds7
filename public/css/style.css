@@ -1,26 +1,33 @@
-html, body{
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+html,
+body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	overflow: hidden;
 }
 
 .row {
 	height: 100%;
 }
 
-.main-container{
+.main-container {
 	height: 100%;
-
 }
 
-.menu-title{
+.menu-container{
+	height: 100%;
+	position: static;
+}
+
+.menu-title {
 	font-size: larger;
 	font-weight: 700;
 	text-transform: uppercase;
 }
 
-.list-container{
+.list-container {
 	list-style-type: none;
 }
 
@@ -35,12 +42,13 @@ html, body{
 	margin-bottom: 1rem;
 	margin-left: 0;
 	border-radius: 15px;
+	transition: all 0.5s ease;
 }
 
 .child-list-container:hover {
 	background-color: #e1eef8;
 	color: #013ea8;
-	transition: all 0.3s ease;
+	transition: all 0.4s ease;
 }
 
 .child-list-container:hover img {
@@ -52,23 +60,96 @@ html, body{
 	min-height: 100vh;
 }
 
-.dash-container{
-	background-color: #f7f5f5;
+.dash-container {
+	background-color: #e7e7e7;
 }
 
 .dash-child {
-	background-image: url(../img/background2-dash.jpg);
-	background-size: cover; /* Ensures the background covers the entire element without distorting */
-	background-position: center; /* Centers the image */
-	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background: rgb(0, 27, 72);
+	background: linear-gradient(49deg, rgba(0, 27, 72, 1) 0%, rgba(67, 8, 156, 1) 50%, rgba(29, 117, 233, 1) 100%);
 	border-radius: 10px;
 	color: white;
 	padding: 1rem;
 }
 
-.dash-stats{
+.dash-child>h1 {
+	font-family: "Poppins", serif;
+}
+
+.dash-child>p {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.dash-stats {
 	border-radius: 7.5px;
 	background-color: white;
 	color: black;
 	gap: 5px;
+	transition: all 0.3s ease-in-out;
+}
+
+.dash-stats:hover {
+	transform: scale(1.1);
+	transition: all 0.3s ease-in-out;
+}
+
+.dash-stats>h2 {
+	font-family: "Josefin Sans", sans-serif;
+}
+
+.dash-stats>p {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	color: #7e7e7e;
+}
+
+.dash-child-2 {
+	max-height: 50vh;
+	overflow-y: auto;
+	background-color: white;
+	border-radius: 10px;
+	scroll-behavior: smooth;
+}
+
+.dash-child-2::-webkit-scrollbar{
+	width: 5px;
+}
+
+.dash-child-2::-webkit-scrollbar-thumb{
+	background-color: #7e7e7e; 
+  border-radius: 20px;
+}
+
+.dash-middle-child{
+	background-color: white;
+	border-radius: 10px;
+}
+
+.dash-stats2 {
+	border-radius: 7.5px;
+	background-color: white;
+	color: black;
+	gap: 5px;
+	transition: all 0.3s ease-in-out;
+}
+
+/* Conciliación Bancaria */
+
+#btn-custom-container>.button-custom {
+	background-color: #1d75e9;
+	color: white;
+}
+
+#btn-custom-container>.button-custom:hover {
+	background-color: #03316d;
+	color: white;
+}
+
+.custom-title {
+	background: rgb(0, 27, 72);
+	background: linear-gradient(49deg, rgba(0, 27, 72, 1) 0%, rgba(67, 8, 156, 1) 50%, rgba(29, 117, 233, 1) 100%);
+	color: white;
 }
