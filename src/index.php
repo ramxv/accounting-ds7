@@ -1,4 +1,12 @@
-	<!doctype html>
+	<?php
+	include "./config/conndb.php";
+	$conn = new Database();
+
+	$conn->getconnectiondb();
+
+	?>
+
+	<!Doctype html>
 	<html lang="es">
 
 	<head>
@@ -6,7 +14,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Contabilidad</title>
 		<!-- CSS -->
-		<link rel="stylesheet" href="../public/css/style.css">
+		<link rel="stylesheet" href="../public/css/style.css"> 
+		<link rel="stylesheet" href="../public/css/style_cxc.css">
+		<link rel="stylesheet" href="../public/css/style_registrogasto.css">
+		<link rel="stylesheet" href="../public/css/style_conciliacion.css">
+		<link rel="stylesheet" href="../public/css/style_cxp.css">
 		<!-- Bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
 			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -34,7 +46,7 @@
 						<ul class="list-container p-0">
 							<!-- CXP -->
 							<li>
-								<a href="" class="child-list-container">
+								<a href="#" class="child-list-container" onclick="cargarPagina('cxPagar/index.php')">
 									<img src="../public/svg/pagar.svg" alt="Cuentas por Pagar Logo" width="30" height="24"
 										class="d-inline-block align-text-top">
 									Cuentas por Pagar
@@ -42,7 +54,7 @@
 							</li>
 							<!-- CXC -->
 							<li>
-								<a href="" class="child-list-container">
+								<a href="#" class="child-list-container" onclick="cargarPagina('cxCobrar/index.php')">
 									<img src="../public/svg/cobrar.svg" alt="Cuentas por Cobrar Logo" width="30" height="24"
 										class="d-inline-block align-text-top">
 									Cuentas por Cobrar
@@ -58,7 +70,7 @@
 							</li>
 							<!-- Ingresos y Gasto -->
 							<li>
-								<a href="" class="child-list-container">
+								<a href="#" class="child-list-container" onclick="cargarPagina('registroIngresoGasto/index.php')">
 									<img src="../public/svg/ingresos-gastos.svg" alt="Ingresos y Gastos Logo" width="30" height="24"
 										class="d-inline-block align-text-top">
 									Ingresos y Gastos
@@ -74,7 +86,7 @@
 							<p class="ms-3">Análisis detallado de las transacciones y el rendimiento financiero de TechSynnergy</p>
 							<div class="row gap-3 p-4 justify-content-evenly">
 								<div class="col-3 dash-stats p-3 m-auto">
-									<h2>$34,343.00</h2>
+									<h2>$75,000,000.00</h2>
 									<p>Patrimonio</p>
 								</div>
 								<div class="col-2 dash-stats p-3 m-auto">
@@ -95,6 +107,8 @@
 								</div>
 							</div>
 						</div>
+
+						<!-- Charts Section -->
 						<div class="col dash-middle-child mt-4">
 							<div class="row gap-3 px-3 justify-content-evenly">
 								<div class="col-5 p-3 m-auto">
@@ -109,10 +123,67 @@
 								</div>
 							</div>
 						</div>
+						<!-- Dropdown Section -->
 						<div class="col dash-child-2 mt-4">
-							<div class="row custom-dash2-background gap-3 mt-4 mx-1 ">
-								<div class="col-12">
-									<div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+							<div class="row mx-1">
+								<div class="col-12 my-3">
+									<h1>Visualización de Operaciones Comerciales</h1>
+									<div class="dropdown my-3 d-inline">
+										<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Operaciones Comerciales
+										</a>
+										<ul class="dropdown-menu" id="dd-oc">
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-ingresos">
+													Ingresos
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-gastos">
+													Gastos
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-compras">
+													Compras
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-ventas">
+													Ventas
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="dropdown my-3 d-inline">
+										<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Limpiar Tablas
+										</a>
+										<ul class="dropdown-menu" id="dd-oc-limpiar">
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-ingresos">
+													Ingresos
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-gastos">
+													Gastos
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-compras">
+													Compras
+												</a>
+											</li>
+											<li>
+												<a class="dropdown-item" id="dd-item" href="#table-ventas">
+													Ventas
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!-- Tables Section -->
+									<div class="table-container my-3" id="table-ingresos" style="display: none;">
 										<h4 id="list-item-1">Ingresos</h4>
 										<table class="table table-hover">
 											<thead>
@@ -143,6 +214,8 @@
 												</tr>
 											</tbody>
 										</table>
+									</div>
+									<div class="table-container mt-3" id="table-gastos" style="display: none;">
 										<h4 id="list-item-2">Gastos</h4>
 										<table class="table table-hover">
 											<thead>
@@ -173,6 +246,8 @@
 												</tr>
 											</tbody>
 										</table>
+									</div>
+									<div class="table-container mt-3" id="table-compras" style="display: none;">
 										<h4 id="list-item-3">Compras</h4>
 										<table class="table table-hover">
 											<thead>
@@ -203,6 +278,8 @@
 												</tr>
 											</tbody>
 										</table>
+									</div>
+									<div class="table-container mt-3" id="table-ventas" style="display: none;">
 										<h4 id="list-item-4">Ventas</h4>
 										<table class="table table-hover">
 											<thead>
