@@ -1,6 +1,6 @@
 
 <div class="formulario-container">
-	<h2>Formulario de Cuentas por Cobrar</h2>
+<h3 class="form-header p-3 border-bottom border-secondary-subtle custom-title">Cuentas por Cobrar</h3>
 	<?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Aquí puedes procesar los datos del formulario
