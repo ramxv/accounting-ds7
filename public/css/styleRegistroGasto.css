@@ -1,30 +1,48 @@
-/* Offcanvas oculto por defect */
+/* Offcanvas oculto por defecto */
 .offcanvas-custom {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Esconde fuera de la pantalla inicialmente */
-    width: 400px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    transition: right 0.3s ease-in-out; /* Transición suave */
-    z-index: 1050; /* Para asegurarse de que esté encima del contenido */
+  position: fixed;
+  top: 0;
+  right: -100%; /* Esconde fuera de la pantalla inicialmente */
+  width: 400px;
+  height: 100%; /* Altura completa */
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transition: right 0.3s ease-in-out; /* Transición suave */
+  z-index: 1050; /* Para asegurarse de que esté encima del contenido */
+}
+
+/* Cuando el offcanvas se muestra */
+.offcanvas-show {
+  right: 0; /* Lo deslizamos a la vista */
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.offcanvas-body {
+  padding: 1rem;
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  max-height: calc(100% - 60px); /* Ajusta la altura para dejar espacio para el encabezado */
+}
+
+
+
+  .container {
+    background-color: rgba(241, 240, 248); 
+    border-radius: 15px; 
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
-  
-  /* Cuando el offcanvas se muestra */
-  .offcanvas-show {
-    right: 0; /* Lo deslizamos a la vista */
-  }
-  
-  .offcanvas-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    border-bottom: 1px solid #dee2e6;
-  }
-  
-  .offcanvas-body {
-    padding: 1rem;
-    overflow-y: auto;
-  }
-  
+  #successMessage {
+    position: fixed; /* Posición fija para que se mantenga en su lugar */
+    top: 50%; /* Centro vertical */
+    left: 50%; /* Centro horizontal */
+    transform: translate(-50%, -50%); /* Ajuste para centrar completamente */
+    z-index: 9999; /* Asegúrate de que aparezca por encima de otros elementos */
+    padding: 15px; /* Espaciado alrededor del mensaje */
+    display: none; /* Inicialmente oculto */
+}
