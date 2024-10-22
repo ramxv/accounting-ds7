@@ -6,60 +6,96 @@ $user = 'edwin';
 $pass = '1234';
 
 try {
-    // Crear conexión con la base de datos
+    // Crear conexión
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Procesar el formulario si es una solicitud POST
+    // Consulta para obtener los métodos de pago con ID 1 y 2
+    $sql = "SELECT ID_Metodo, Nombre FROM metodos_pago_cobro WHERE ID_Metodo IN (1, 2)";
+    $stmt = $pdo->query($sql);
+    $metodos_pago = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Inicializar variable para mensajes
+    $message = '';
+
+    // Procesar el formulario
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Recoger los datos del formulario
+        $id_registro = $_POST['id_registro'];
+        $fecha_registro = $_POST['fecha_registro'];
+        $descripcion = $_POST['descripcion'];
+        $categoria = $_POST['depreciacion'];
+        $monto = $_POST['precio'];
+        $fuente_ingresos = $_POST['Transaccion'];
+        $metodo_pago = $_POST['metodo_de_pago'];
         $id_cheque = $_POST['id_cheque'];
-        $numero_cheque = $_POST['numero_cheque'];
-        $fecha_emision = $_POST['fecha_emision'];
-        $fecha_cobro = $_POST['fecha_cobro'];
-        $monto = $_POST['monto'];
-        $estado = $_POST['estado'];
-        $proveedor = $_POST['proveedor'];
-        $comentarios = $_POST['comentarios'];
+        $comentarios_adicionales = $_POST['comentarios_adicionales'];
 
-        // Verificar si algún campo está vacío
-        if (empty($id_cheque) || empty($numero_cheque) || empty($fecha_emision) || 
-            empty($fecha_cobro) || empty($monto) || empty($estado) || empty($proveedor)) {
-            echo "Por favor, llene todos los campos.";
-            exit;
-        } elseif (!is_numeric($id_cheque)) {
-            // Verificar si ID_Cheque es un número
-            echo "El campo ID Cheque debe ser un número.";
-            exit;
+        // Verificar si algún campo está vacío o es NULL
+        if (empty($id_registro) || empty($fecha_registro) || empty($descripcion) || empty($categoria) || 
+            empty($monto) || empty($fuente_ingresos) || empty($metodo_pago) || empty($id_cheque)) {
+            $message = "Por favor, llene todos los campos.";
+        } elseif (!is_numeric($id_registro)) {
+            // Verificar si id_registro no es numérico
+            $message = "El campo ID_Registro debe ser un número.";
         } else {
-            // Intentar insertar los datos en la base de datos
-            try {
-                // Consulta para insertar los datos
-                $insert_sql = "INSERT INTO cheques (ID_Cheque, Numero_Cheque, Fecha_Emision, Fecha_Cobro, Monto, Estado, Proveedor, Comentarios) 
-                               VALUES (:id_cheque, :numero_cheque, :fecha_emision, :fecha_cobro, :monto, :estado, :proveedor, :comentarios)";
-                
-                $insert_stmt = $pdo->prepare($insert_sql);
-                $insert_stmt->execute([
-                    ':id_cheque' => $id_cheque,
-                    ':numero_cheque' => $numero_cheque,
-                    ':fecha_emision' => $fecha_emision,
-                    ':fecha_cobro' => $fecha_cobro,
-                    ':monto' => $monto,
-                    ':estado' => $estado,
-                    ':proveedor' => $proveedor,
-                    ':comentarios' => $comentarios,
-                ]);
+            // Verificar si el ID ya existe en la base de datos
+            $check_sql = "SELECT COUNT(*) FROM registro_ingreso_gasto WHERE ID_Registro = :id_registro";
+            $check_stmt = $pdo->prepare($check_sql);
+            $check_stmt->execute([':id_registro' => $id_registro]);
+            $exists = $check_stmt->fetchColumn();
 
-                // Si la inserción fue exitosa
-                echo "Cheque registrado exitosamente.";
-            } catch (PDOException $e) {
-                // Mostrar cualquier error de inserción
-                echo "Error al guardar el cheque: " . $e->getMessage();
+            if ($exists > 0) {
+                $message = "Error: Ya existe un registro con este ID. Por favor, elija un ID diferente.";
+            } else {
+                // Verificar si el número de cheque existe en la base de datos
+                $check_cheque_sql = "SELECT COUNT(*) FROM cheques WHERE ID_Cheque = :id_cheque";
+                $check_cheque_stmt = $pdo->prepare($check_cheque_sql);
+                $check_cheque_stmt->execute([':id_cheque' => $id_cheque]);
+                $cheque_exists = $check_cheque_stmt->fetchColumn();
+
+                if ($cheque_exists == 0) {
+                    $message = "Número de cheque no existe. Registre el cheque para continuar.";
+                } else {
+                    // Intentamos insertar los datos
+                    try {
+                        // Consulta para insertar los datos en la tabla
+                        $insert_sql = "INSERT INTO registro_ingreso_gasto (ID_Registro, Fecha_Registro, Descripcion, Categoria, Monto, Fuente_Ingresos, ID_Metodo, ID_Cheque, Comentarios_Adicionales) 
+                                       VALUES (:id_registro, :fecha_registro, :descripcion, :categoria, :monto, :fuente_ingresos, :metodo_pago, :id_cheque, :comentarios_adicionales)";
+                        
+                        $insert_stmt = $pdo->prepare($insert_sql);
+                        $insert_stmt->execute([
+                            ':id_registro' => $id_registro,
+                            ':fecha_registro' => $fecha_registro,
+                            ':descripcion' => $descripcion,
+                            ':categoria' => $categoria,
+                            ':monto' => $monto,
+                            ':fuente_ingresos' => $fuente_ingresos,
+                            ':metodo_pago' => $metodo_pago,
+                            ':id_cheque' => $id_cheque,
+                            ':comentarios_adicionales' => $comentarios_adicionales,
+                        ]);
+
+                        // Si la inserción fue exitosa
+                        $message = "Registro guardado exitosamente!";
+                    } catch (PDOException $e) {
+                        // Si se produce un error de clave duplicada, mostrar un mensaje personalizado
+                        if ($e->getCode() == 23000) {
+                            $message = "Error: Ya existe un registro con este ID. Por favor, elija un ID diferente.";
+                        } else {
+                            // Mostrar cualquier otro error de inserción
+                            $message = "Error al guardar el registro: " . $e->getMessage();
+                        }
+                    }
+                }
             }
         }
+        
+        // Imprimir el mensaje de respuesta directamente
+        echo $message; 
+        exit; // Asegúrate de salir para evitar cualquier salida adicional
     }
 } catch (PDOException $e) {
-    // Error al conectar con la base de datos
-    echo "Error de conexión: " . $e->getMessage();
+    echo "Error: " . $e->getMessage();
 }
 ?>
