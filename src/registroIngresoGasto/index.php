@@ -7,7 +7,7 @@
                <?php echo $message; ?>
                 </div>
     <!-- Título -->
-    <h1 class="text-center" style="font-family: 'Poppins', sans-serif; color: #001b48;">Registro de Ingresos de Gasto</h1>
+    <h1 class="text-center" style="font-family: 'Poppins', sans-serif; color: #001b48;">Registro de Ingresos o Gasto</h1>
 
     <!-- Dropdown para seleccionar el método de pago -->
     <div class="dropdown my-3 d-inline">
