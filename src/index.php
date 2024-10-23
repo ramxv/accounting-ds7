@@ -329,6 +329,8 @@ if ($conn) {
 	<script src="../public/js/config/charts.js"></script>
 	<script src="../public/js/config/dataTables.js"></script>
 	<script src="../public/js/conciliacion.js"></script>
+	<script src="../../public/js/registroIngresoGasto.js" defer></script>
+
 </body>
 
 </html>

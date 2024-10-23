@@ -1,14 +1,9 @@
-/* Offcanvas oculto por defect */
-.offcanvas-custom {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Esconde fuera de la pantalla inicialmente */
-    width: 400px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    transition: right 0.3s ease-in-out; /* Transición suave */
-    z-index: 1050; /* Para asegurarse de que esté encima del contenido */
+
+  .container {
+    background-color: rgba(241, 240, 248); 
+    border-radius: 15px; 
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
   /* Cuando el offcanvas se muestra */
@@ -29,8 +24,22 @@
   }
   
 	.container {
+    position: relative;
     background-color: rgba(241, 240, 248); 
     border-radius: 15px; 
     border: 1px solid rgba(0, 0, 0, 0.2); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
+
+  
+
+  /*#successMessage {
+    position: absolute; /* Mantener el mensaje en una posición absoluta */
+  /*  top: -50px; Ajusta esta posición según sea necesario */
+   /* left: 50%; /* Centrar horizontalmente */
+   /* transform: translateX(-50%); /* Ajustar para centrar */
+   /* z-index: 9999; /* Asegúrate de que esté encima de otros elementos */
+   /* width: 80%; /* Ancho del mensaje */
+   /* max-width: 500px; /* Ancho máximo del mensaje */
+   /* display: none; /* Ocultar inicialmente */
+/*}*/
