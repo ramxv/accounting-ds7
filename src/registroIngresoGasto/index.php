@@ -1,7 +1,16 @@
 <?php  include 'Registro.php';?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>/* Cuando el input es válido
+.is-valid {
+    border-color: #28a745;
+}
 
+Cuando el input es inválido 
+.is-invalid {
+    border-color: #dc3545;
+}  */
+</style>
 <div class="container mt-5 mb-5">
 <div class="alert alert-success position-absolute w-100" id='successMessage' style="top: 350px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; display: none; opacity: 0.6;">
                <?php echo $message; ?>
@@ -34,8 +43,8 @@
 
                 <!-- Descripción -->
                 <div class="col-md-6 mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" rows="1" required></textarea>
+                    <label for="descripcion" class="form-label"  style="font-family: 'Roboto', sans-serif; font-weight: bold; display: block;">Descripción</label>
+                    <textarea class="form-control text-center" id="descripcion" name="descripcion" rows="1" required></textarea>
                 </div>
 
                 <!-- Monto -->

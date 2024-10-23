@@ -137,3 +137,104 @@ document.getElementById('numero_cheque').addEventListener('input', function () {
     }
 });
 
+// Validar Descripción (solo letras y números)
+function validarDescripcion(event) {
+    var regex = /^[a-zA-Z0-9\s]*$/; // Permitir solo letras, números y espacios
+    if (!regex.test(event.key)) {
+        event.preventDefault(); // Evitar que se ingrese el carácter no válido
+    }
+}
+
+// Validar Monto (solo números y un punto decimal)
+function validarMonto(event) {
+    var regex = /^[0-9]*\.?[0-9]{0,2}$/; // Permitir solo números y un punto seguido de hasta 2 decimales
+    var input = $(this).val() + event.key; // Valor actual + la tecla que se intenta insertar
+    if (!regex.test(input)) {
+        event.preventDefault(); // Evitar que se ingrese el carácter no válido
+    }
+}
+
+// Validar Número de Cheque (solo letras y números)
+function validarNumeroCheque(event) {
+    var regex = /^[a-zA-Z0-9]*$/; // Permitir solo letras y números
+    if (!regex.test(event.key)) {
+        event.preventDefault(); // Evitar que se ingrese el carácter no válido
+    }
+}
+
+// Validar Comentarios Adicionales (solo letras y números)
+function validarComentariosAdicionales(event) {
+    var regex = /^[a-zA-Z0-9\s]*$/; // Permitir solo letras, números y espacios
+    if (!regex.test(event.key)) {
+        event.preventDefault(); // Evitar que se ingrese el carácter no válido
+    }
+}
+
+$(document).ready(function() {
+    // Aplicar validación a los inputs
+    $('#descripcion').on('keypress', validarDescripcion);
+    $('#monto').on('keypress', validarMonto);
+    $('#numero_cheque').on('keypress', validarNumeroCheque);
+    $('#comentarios_adicionales').on('keypress', validarComentariosAdicionales);
+});
+
+
+/*
+
+// Validar Descripción (solo letras y números)
+function validarDescripcion() {
+    var descripcion = $('#descripcion').val();
+    var regex = /^[a-zA-Z0-9\s]+$/;
+    if (!regex.test(descripcion)) {
+        $('#descripcion').addClass('is-invalid').removeClass('is-valid');
+    } else {
+        $('#descripcion').addClass('is-valid').removeClass('is-invalid');
+    }
+}
+
+// Validar Monto (números, un solo punto y dos decimales)
+function validarMonto() {
+    var monto = $('#monto').val();
+    var regex = /^\d+(\.\d{1,2})?$/;
+    if (!regex.test(monto)) {
+        $('#monto').addClass('is-invalid').removeClass('is-valid');
+    } else {
+        $('#monto').addClass('is-valid').removeClass('is-invalid');
+    }
+}
+
+// Validar Número de Cheque (solo letras y números)
+function validarNumeroCheque() {
+    var numeroCheque = $('#numero_cheque').val();
+    if (numeroCheque === '') {
+        $('#numero_cheque').removeClass('is-invalid is-valid'); // Eliminar clases si está vacío (opcional)
+        return;
+    }
+    var regex = /^[a-zA-Z0-9]+$/;
+    if (!regex.test(numeroCheque)) {
+        $('#numero_cheque').addClass('is-invalid').removeClass('is-valid');
+    } else {
+        $('#numero_cheque').addClass('is-valid').removeClass('is-invalid');
+    }
+}
+
+// Validar Comentarios Adicionales (solo letras y números)
+function validarComentariosAdicionales() {
+    var comentarios = $('#comentarios_adicionales').val();
+    var regex = /^[a-zA-Z0-9\s]+$/;
+    if (!regex.test(comentarios)) {
+        $('#comentarios_adicionales').addClass('is-invalid').removeClass('is-valid');
+    } else {
+        $('#comentarios_adicionales').addClass('is-valid').removeClass('is-invalid');
+    }
+}
+
+
+$(document).ready(function() {
+    // Llamar validaciones en tiempo real mientras el usuario escribe
+    $('#descripcion').on('input', validarDescripcion);
+    $('#monto').on('input', validarMonto);
+    $('#numero_cheque').on('input', validarNumeroCheque);
+    $('#comentarios_adicionales').on('input', validarComentariosAdicionales);
+});
+*/
