@@ -30,21 +30,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
-
-
- 
-  
-
-  
-  
-  function showMessage(message, type) {
-      const messageContainer = document.getElementById('responseMessage');
-      messageContainer.innerHTML = `<div class="alert alert-${type}" id="successMessage">${message}</div>`;
-  }
-
-
-
-  
-  
-  
