@@ -1,20 +1,23 @@
-<?php  include 'Registro.php';?>
+<?php include 'Registro.php'; ?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style>/* Cuando el input es válido
+<style>
+/* Cuando el input es válido
 .is-valid {
     border-color: #28a745;
 }
 
-Cuando el input es inválido 
+/* Cuando el input es inválido 
 .is-invalid {
     border-color: #dc3545;
 }  */
 </style>
+
 <div class="container mt-5 mb-5">
-<div class="alert alert-success position-absolute w-100" id='successMessage' style="top: 350px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; display: none; opacity: 0.6;">
-               <?php echo $message; ?>
-                </div>
+    <div class="alert alert-success position-absolute w-100" id='successMessage' style="top: 350px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; display: none; opacity: 0.6;">
+        <?php echo $message; ?>
+    </div>
+    
     <!-- Título -->
     <h1 class="text-center" style="font-family: 'Poppins', sans-serif; color: #001b48;">Registro de Ingresos o Gasto</h1>
 
@@ -33,8 +36,17 @@ Cuando el input es inválido
     <div id="form-ingreso-gasto" style="display: block;"> <!-- Se muestra siempre -->
         <h4 class="mt-3">Registro de Ingresos/Gastos</h4>
         <form id="registroForm" method="POST" action="Registro.php" class="mt-4">
-        <div class="row">
-               
+            <div class="row">
+                 <!-- Campo nuevo para la categoría -->
+                 <div class="col-md-6 mb-3">
+                    <label for="depreciacion" class="form-label" style="font-family: 'Roboto', sans-serif; font-weight: bold;">Categoría</label>
+                    <select class="form-select" id="depreciacion" name="depreciacion" required>
+                        <option value="" selected>Selecciona la categoría</option>
+                        <option value="ingreso">Ingreso</option>
+                        <option value="gasto">Gasto</option>
+                    </select>
+                </div>
+                
                 <!-- Fecha de Registro -->
                 <div class="col-md-6 mb-3">
                     <label for="fecha_registro" class="form-label">Fecha de Registro</label>
@@ -43,7 +55,7 @@ Cuando el input es inválido
 
                 <!-- Descripción -->
                 <div class="col-md-6 mb-3">
-                    <label for="descripcion" class="form-label"  style="font-family: 'Roboto', sans-serif; font-weight: bold; display: block;">Descripción</label>
+                    <label for="descripcion" class="form-label" style="font-family: 'Roboto', sans-serif; font-weight: bold; display: block;">Descripción</label>
                     <textarea class="form-control text-center" id="descripcion" name="descripcion" rows="1" required></textarea>
                 </div>
 
@@ -56,31 +68,31 @@ Cuando el input es inválido
                 <div class="col-md-6 mb-3">
                     <label for="comentarios_adicionales" class="form-label" style="font-family: 'Roboto', sans-serif; font-weight: bold; display: block;">Comentarios Adicionales</label>
                     <textarea class="form-control text-center" id="comentarios_adicionales" name="comentarios_adicionales" rows="1" required></textarea>
-                 </div>
-                 <div class="col-md-6 mb-3">
-                     <label for="Transaccion" class="form-label" style="font-family: 'Roboto', sans-serif; font-weight: bold;">Transacción</label>
-                     <select class="form-select" id="Transaccion" name="fuente_ingresos" required>
-                     <option value="" selected>Selecciona Transacción</option>
-                     <option value="cliente">Cliente</option>
-                     <option value="proyecto">Proyecto</option>
-                     <option value="otros_ingresos">Otras transacciones</option>
-                     </select>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="Transaccion" class="form-label" style="font-family: 'Roboto', sans-serif; font-weight: bold;">Transacción</label>
+                    <select class="form-select" id="Transaccion" name="fuente_ingresos" required>
+                        <option value="" selected>Selecciona Transacción</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="proyecto">Proyecto</option>
+                        <option value="otros_ingresos">Otras transacciones</option>
+                    </select>
                 </div>
 
                 <!-- Sección de ID de Cheque (oculta por defecto) -->
                 <div class="col-md-6 mb-3" id="cheque-section" style="display: none;">
-                      <label for="numero_cheque" class="form-label">Número de Cheque</label>
-                        <input type="text" class="form-control" id="numero_cheque" name="numero_cheque">
-                  <div id="cheque-id" style="display:none;"></div>
+                    <label for="numero_cheque" class="form-label">Número de Cheque</label>
+                    <input type="text" class="form-control" id="numero_cheque" name="numero_cheque">
+                    <div id="cheque-id" style="display:none;"></div>
                 </div>
 
                 <div class="text-center mt-4 mb-4">
-                 <button type="button" class="btn btn-success" id="submitBtn">Registrar</button>
-                 <button type="reset" class="btn btn-secondary">Limpiar</button>
+                    <button type="button" class="btn btn-success" id="submitBtn">Registrar</button>
+                    <button type="reset" class="btn btn-secondary">Limpiar</button>
                 </div>
             </div>
         </form>
-       
     </div>
 </div>
 

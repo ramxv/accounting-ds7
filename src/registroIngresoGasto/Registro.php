@@ -12,9 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comentariosAdicionales = $_POST['comentarios_adicionales'];
     $fuenteIngresos = $_POST['fuente_ingresos'];
     $numeroCheque = isset($_POST['numero_cheque']) ? $_POST['numero_cheque'] : null;
+    $categoria = $_POST['depreciacion']; // Obtener el nuevo campo
 
     // Validar que todos los campos requeridos estén llenos
-    if (empty($fechaRegistro) || empty($descripcion) || empty($monto) || empty($fuenteIngresos)) {
+    if (empty($fechaRegistro) || empty($descripcion) || empty($monto) || empty($fuenteIngresos) || empty($categoria)) {
         $message = "Por favor, llene todos los campos.";
         echo json_encode(['error' => $message]);
         exit;
@@ -39,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Insertar datos en la tabla
-        $sql = "INSERT INTO registro_ingreso_gasto (Fecha_Registro, Descripcion, Monto, ID_Cheque, Comentarios_Adicionales, Fuente_Ingresos) 
-                VALUES (:fecha_registro, :descripcion, :monto, :id_cheque, :comentarios_adicionales, :fuente_ingresos)";
+        // Insertar datos en la tabla, incluyendo la categoría
+        $sql = "INSERT INTO registro_ingreso_gasto (Fecha_Registro, Descripcion, Monto, ID_Cheque, Comentarios_Adicionales, Fuente_Ingresos, Categoria) 
+                VALUES (:fecha_registro, :descripcion, :monto, :id_cheque, :comentarios_adicionales, :fuente_ingresos, :categoria)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':fecha_registro', $fechaRegistro);
@@ -49,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':monto', $monto);
         $stmt->bindParam(':comentarios_adicionales', $comentariosAdicionales);
         $stmt->bindParam(':fuente_ingresos', $fuenteIngresos);
+        $stmt->bindParam(':categoria', $categoria); // Vincular la categoría
 
         if ($idCheque !== null) {
             $stmt->bindParam(':id_cheque', $idCheque);
