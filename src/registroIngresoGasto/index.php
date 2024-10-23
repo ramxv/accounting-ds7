@@ -88,8 +88,8 @@
                 </div>
 
                 <div class="text-center mt-4 mb-4">
-                    <button type="button" class="btn btn-success" id="submitBtn">Registrar</button>
-                    <button type="reset" class="btn btn-secondary">Limpiar</button>
+                <button type="button" class="btn btn-success" id="submitBtn" style="background-color: #1d75e9; border-color: #1d75e9; color: white;">Registrar</button>
+                <button type="reset" class="btn btn-secondary" style="background-color: #03316d; border-color: #03316d; color: white;">Limpiar</button>
                 </div>
             </div>
         </form>
