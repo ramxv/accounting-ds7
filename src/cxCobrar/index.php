@@ -1,3 +1,5 @@
+
+
 <div class="formulario-container">
 <h3 class="form-header p-3 border-bottom border-secondary-subtle custom-title">Cuentas por Cobrar</h3>
 	<?php
@@ -5,7 +7,7 @@
 		//  procesar los datos del formulario
 		echo "<p>Formulario enviado con éxito!</p>";
 
-        		// Capturar datos del formulario
+        // Capturar datos del formulario
 		$idFactura = $_POST['id_factura'];
 		$proveedorID = $_POST['id_proveedor'];
 		$fechaEmision = $_POST['fecha_emision'];
@@ -13,30 +15,18 @@
 		$montoPagar = $_POST['monto_pagar'];
 		$estadoPago = $_POST['estado_pago'];
 		$metodoPago = $_POST['metodo_pago'];
-		$numeroCheque = $_POST['numero_cheque'];
+		$numero_recibo = $_POST['numero_recibo'];
 		$comentarios = $_POST['comentarios'];
-
-		// Mostrar los datos procesados (solo con fines de demostración)
-		echo "<h3>Datos procesados:</h3>";
-		echo "<ul>";
-		echo "<li>ID Factura: $idFactura</li>";
-		echo "<li>ID Proveedor: $proveedorID</li>";
-		echo "<li>Fecha de Emisión: $fechaEmision</li>";
-		echo "<li>Fecha de Vencimiento: $fechaVencimiento</li>";
-		echo "<li>Monto a Pagar: $$montoPagar</li>";
-		echo "<li>Estado de Pago: $estadoPago</li>";
-		echo "<li>Método de Pago: $metodoPago</li>";
-		echo "<li>Número de Cheque: $numeroCheque</li>";
-		echo "<li>Comentarios: $comentarios</li>";
-		echo "</ul>";
 	}
 	?>
+
+
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		<label for="id_factura">ID Factura:</label>
 		<input type="text" id="id_factura" name="id_factura" required>
 
 		<label for="id_proveedor">ID Proveedor:</label>
-		<input type="text" id="id_cliente" name="id_cliente" required>
+		<input type="text" id="id_proveedor" name="id_proveedor" required>
 
 		<label for="fecha_emision">Fecha de Emisión:</label>
 		<input type="date" id="fecha_emision" name="fecha_emision" required>
