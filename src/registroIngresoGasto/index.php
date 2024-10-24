@@ -14,7 +14,7 @@
 </style>
 
 <div class="container mt-5 mb-5">
-    <div class="alert alert-success position-absolute w-100" id='successMessage' style="top: 350px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; display: none; opacity: 0.6;">
+    <div class="alert alert-success position-absolute w-100" id='successMessage' style="top: 350px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; display: none; opacity: 1.0;">
         <?php echo $message; ?>
     </div>
     
