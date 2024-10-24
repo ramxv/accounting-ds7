@@ -1,0 +1,15 @@
+#btn-custom-container>.button-custom {
+	background-color: #1d75e9;
+	color: white;
+}
+
+#btn-custom-container>.button-custom:hover {
+	background-color: #03316d;
+	color: white;
+}
+
+.custom-title {
+	background: rgb(0, 27, 72);
+	background: linear-gradient(49deg, rgba(0, 27, 72, 1) 0%, rgba(67, 8, 156, 1) 50%, rgba(29, 117, 233, 1) 100%);
+	color: white;
+}

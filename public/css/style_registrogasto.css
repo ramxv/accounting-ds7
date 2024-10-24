@@ -1,0 +1,45 @@
+
+  .container {
+    background-color: rgba(241, 240, 248); 
+    border-radius: 15px; 
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+  /* Cuando el offcanvas se muestra */
+  .offcanvas-show {
+    right: 0; /* Lo deslizamos a la vista */
+  }
+  
+  .offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .offcanvas-body {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+	.container {
+    position: relative;
+    background-color: rgba(241, 240, 248); 
+    border-radius: 15px; 
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+
+  
+
+  /*#successMessage {
+    position: absolute; /* Mantener el mensaje en una posición absoluta */
+  /*  top: -50px; Ajusta esta posición según sea necesario */
+   /* left: 50%; /* Centrar horizontalmente */
+   /* transform: translateX(-50%); /* Ajustar para centrar */
+   /* z-index: 9999; /* Asegúrate de que esté encima de otros elementos */
+   /* width: 80%; /* Ancho del mensaje */
+   /* max-width: 500px; /* Ancho máximo del mensaje */
+   /* display: none; /* Ocultar inicialmente */
+/*}*/

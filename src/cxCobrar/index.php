@@ -1,9 +1,8 @@
-
-
 <div class="formulario-container">
 <h3 class="form-header p-3 border-bottom border-secondary-subtle custom-title">Cuentas por Cobrar</h3>
 	<?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 		//  procesar los datos del formulario
 		echo "<p>Formulario enviado con éxito!</p>";
 
@@ -20,13 +19,15 @@
 	}
 	?>
 
-
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		<label for="id_factura">ID Factura:</label>
 		<input type="text" id="id_factura" name="id_factura" required>
 
+
 		<label for="id_proveedor">ID Proveedor:</label>
 		<input type="text" id="id_proveedor" name="id_proveedor" required>
+		<label for="id_cliente">ID Cliente:</label>
+		<input type="text" id="id_cliente" name="id_cliente" required>
 
 		<label for="fecha_emision">Fecha de Emisión:</label>
 		<input type="date" id="fecha_emision" name="fecha_emision" required>
