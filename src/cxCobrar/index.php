@@ -1,16 +1,31 @@
-
 <div class="formulario-container">
 <h3 class="form-header p-3 border-bottom border-secondary-subtle custom-title">Cuentas por Cobrar</h3>
 	<?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// Aquí puedes procesar los datos del formulario
+
+		//  procesar los datos del formulario
 		echo "<p>Formulario enviado con éxito!</p>";
+
+        // Capturar datos del formulario
+		$idFactura = $_POST['id_factura'];
+		$proveedorID = $_POST['id_proveedor'];
+		$fechaEmision = $_POST['fecha_emision'];
+		$fechaVencimiento = $_POST['fecha_vencimiento'];
+		$montoPagar = $_POST['monto_pagar'];
+		$estadoPago = $_POST['estado_pago'];
+		$metodoPago = $_POST['metodo_pago'];
+		$numero_recibo = $_POST['numero_recibo'];
+		$comentarios = $_POST['comentarios'];
 	}
 	?>
+
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		<label for="id_factura">ID Factura:</label>
 		<input type="text" id="id_factura" name="id_factura" required>
 
+
+		<label for="id_proveedor">ID Proveedor:</label>
+		<input type="text" id="id_proveedor" name="id_proveedor" required>
 		<label for="id_cliente">ID Cliente:</label>
 		<input type="text" id="id_cliente" name="id_cliente" required>
 
@@ -27,7 +42,6 @@
 		<select id="estado_cobro" name="estado_cobro" required>
 			<option value="">Seleccione un estado</option>
 			<option value="pendiente">Pendiente</option>
-			<option value="parcial">Parcial</option>
 			<option value="pagado">Pagado</option>
 		</select>
 
@@ -35,8 +49,7 @@
 		<select id="metodo_cobro" name="metodo_cobro" required>
 			<option value="">Seleccione un método</option>
 			<option value="efectivo">Efectivo</option>
-			<option value="transferencia">Transferencia Bancaria</option>
-			<option value="tarjeta">Tarjeta de Crédito/Débito</option>
+			<option value="cheque">Cheque</option>
 		</select>
 
 		<label for="numero_recibo">Número de Recibo:</label>
