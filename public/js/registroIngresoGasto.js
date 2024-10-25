@@ -37,6 +37,17 @@ function showMessage(message, type) {
     }, 3000);
 }
 
+   // Obtener la fecha actual
+   const today = new Date();
+   const yyyy = today.getFullYear();
+   const mm = String(today.getMonth() + 1).padStart(2, '0'); // Mes con dos dígitos
+   const dd = String(today.getDate()).padStart(2, '0'); // Día con dos dígitos
+
+   // Formatear la fecha como 'YYYY-MM-DD'
+   const currentDate = `${yyyy}-${mm}-${dd}`;
+
+   // Asignar la fecha actual al campo de fecha
+   document.getElementById('fecha_registro').value = currentDate;
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM completamente cargado');
